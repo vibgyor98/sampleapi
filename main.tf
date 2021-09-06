@@ -15,6 +15,15 @@ provider "azurerm" {
   }
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name = "rg_storage_tf_state"
+    storage_account_name = "tfstoragestate"
+    container_name = "tfdata"
+    key = "terraform.tfstate"
+  }
+}
+
 #create resource group for sampleapi
 resource "azurerm_resource_group" "tf_rg_sampleapi" {
   name     = "souravkartfrg"
