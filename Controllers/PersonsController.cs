@@ -14,9 +14,6 @@ namespace SampleApi.Controllers
                 "Real Madrid",
                 "Manchester City",
                 "Manchester United",
-                "Paris Saint-Germain",
-                "Leeds United",
-                "Celta Vigo",
                 "Chelsea",
                 "Liverpool"
             };
