@@ -43,3 +43,20 @@ resource "azurerm_container_group" "tf_cg_sampleapi" {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ARM_CLIENT_ID:a46fc178-ae2e-48b9-af7f-f3bb8bbce222
+# ARM_CLIENT_SECRET:v38cN.yg0fq1osc4T~FXSy2_XybAlWH.6W
+# ARM_TENANT_ID:e0aca919-c1f3-4216-bdf0-109be504f5d5
+# ARM_SUBSCRIPTION_ID:e3852888-b6bb-4048-ac92-1439dd471cd7
