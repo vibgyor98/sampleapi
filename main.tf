@@ -24,6 +24,12 @@ terraform {
   }
 }
 
+#use this varibale for tagging docker image
+variable "imagebuild" {
+  type = string
+  description = "the latest build version"
+}
+
 #create resource group for sampleapi
 resource "azurerm_resource_group" "tf_rg_sampleapi" {
   name     = "souravkartfrg"
@@ -42,7 +48,7 @@ resource "azurerm_container_group" "tf_cg_sampleapi" {
 
   container {
     name   = "sampleapi"
-    image  = "souravkar/sampleapi:v1.0.0"
+    image  = "souravkar/sampleapi:${var.imagebuild}"
     cpu    = "1"
     memory = "1"
 
@@ -52,15 +58,6 @@ resource "azurerm_container_group" "tf_cg_sampleapi" {
     }
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 

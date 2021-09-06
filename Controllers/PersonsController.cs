@@ -16,7 +16,9 @@ namespace SampleApi.Controllers
                 "Manchester United",
                 "Paris Saint-Germain",
                 "Leeds United",
-                "Celta Vigo"
+                "Celta Vigo",
+                "Chelsea",
+                "Liverpool"
             };
             return Ok(persons);
         }
