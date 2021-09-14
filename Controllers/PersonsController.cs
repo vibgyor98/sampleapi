@@ -12,8 +12,7 @@ namespace SampleApi.Controllers
             var persons = new string[]{
                 "Barcelona",
                 "Real Madrid",
-                "Manchester City",
-                "Manchester United"
+                "Manchester City"
             };
             return Ok(persons);
         }
