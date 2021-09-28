@@ -13,7 +13,6 @@ namespace SampleApi.Controllers
                 "Barcelona",
                 "Real Madrid",
                 "Manchester City",
-                "Manchester United",
                 "Liverpool",
                 "Chelsea"
             };
