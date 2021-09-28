@@ -1,4 +1,4 @@
-resource_group_name     = "souravkartfrg"
+resource_group_name     = "souravkarACRtf"
 resource_group_location = "eastus"
 app_service_plan_name   = "ACR-AWA-Container"
 app_service_name        = "ACR-001"
