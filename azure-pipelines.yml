@@ -18,8 +18,10 @@ stages:
     steps:
     - task: Docker@2
       inputs:
-        containerRegistry: 'Docker Registry Service Conn'
-        repository: 'souravkar/sampleapi'
+        # containerRegistry: 'Docker Registry Service Conn'
+        containerRegistry: 'ACR Service Conn'
+        # repository: 'souravkar/sampleapi'
+        repository: 'souravkar.azurecr.io/sampleapi'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
