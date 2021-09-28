@@ -1,0 +1,8 @@
+resource_group_name     = "souravkartfrg"
+resource_group_location = "eastus"
+app_service_plan_name   = "ACR-AWA-Container"
+app_service_name        = "ACR-001"
+# sql_server_name         = "gm-dev-01-check"
+# sql_database_name       = "gm-dev-01"
+# sql_admin_login         = "dbOwner"
+# sql_admin_password      = "@Aavhgklk89!"

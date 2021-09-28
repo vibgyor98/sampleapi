@@ -32,32 +32,79 @@ variable "imagebuild" {
 
 #create resource group for sampleapi
 resource "azurerm_resource_group" "tf_rg_sampleapi" {
-  name     = "souravkartfrg"
-  location = "eastus"
+  name     = var.resource_group_name
+  location = var.resource_group_location
 }
 
 #create container group
-resource "azurerm_container_group" "tf_cg_sampleapi" {
-  name                = "cg_sampleapi"
-  location            = azurerm_resource_group.tf_rg_sampleapi.location
-  resource_group_name = azurerm_resource_group.tf_rg_sampleapi.name
+# resource "azurerm_container_group" "tf_cg_sampleapi" {
+#   name                = "cg_sampleapi"
+#   location            = azurerm_resource_group.tf_rg_sampleapi.location
+#   resource_group_name = azurerm_resource_group.tf_rg_sampleapi.name
 
-  ip_address_type = "public"
-  dns_name_label  = "sampleapitf"
-  os_type         = "Linux"
+#   ip_address_type = "public"
+#   dns_name_label  = "sampleapitf"
+#   os_type         = "Linux"
 
-  container {
-    name = "souravkar"
-    # image  = "souravkar.azurecr.io/sampleapi:${var.imagebuild}"
-    image  = "souravkar.azurecr.io/sampleapi"
-    cpu    = "1"
-    memory = "1"
+#   container {
+#     name = "souravkar"
+#     # image  = "souravkar.azurecr.io/sampleapi:${var.imagebuild}"
+#     image  = "souravkar.azurecr.io/sampleapi"
+#     cpu    = "1"
+#     memory = "1"
 
-    ports {
-      port     = 80
-      protocol = "TCP"
-    }
+#     ports {
+#       port     = 80
+#       protocol = "TCP"
+#     }
+#   }
+# }
+
+
+//Creating app service plan
+resource "azurerm_app_service_plan" "app_plan" {
+  name                = var.app_service_plan_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  sku {
+    tier = "Standard"
+    size = "S1"
   }
+}
+
+//Creating app service with Container
+resource "azurerm_app_service" "webapp" {
+  # count = 2
+  # name                = "${var.app_service_name}-${count.index}"
+  # name                = element(var.app_service_name, count.index)
+  name                = var.app_service_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  app_service_plan_id = azurerm_app_service_plan.app_plan.id
+
+  //Define conn string for ACR with deployed image
+  site_config {
+    app_command_line = ""
+    # linux_fx_version = "DOCKER|appsvcsample/python-helloworld:latest"
+    linux_fx_version         = "DOCKER|souravkar.azurecr.io/sampleapi:${var.imagebuild}"
+    dotnet_framework_version = "v4.0"
+    scm_type                 = "LocalGit"
+  }
+
+  //Define ACR Server login url, username, password
+  app_settings = {
+    # "SOME_KEY" = "some-value"
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+    # "DOCKER_REGISTRY_SERVER_URL"          = "https://index.docker.io"
+    "DOCKER_REGISTRY_SERVER_URL" = "souravkar.azurecr.io"
+  }
+
+  # connection_string {
+  #   name  = "Database"
+  #   type  = "SQLAzure"
+  #   value = "Server=tcp:azurerm_sql_server.sqldb.fully_qualified_domain_name Database=azurerm_sql_database.db.name;User ID=azurerm_sql_server.sqldb.administrator_login;Password=azurerm_sql_server.sqldb.administrator_login_password;Trusted_Connection=False;Encrypt=True;"
+  # }
 }
 
 
