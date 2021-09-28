@@ -31,7 +31,7 @@ variable "imagebuild" {
 }
 
 #create resource group for sampleapi
-resource "azurerm_resource_group" "tf_rg_sampleapi" {
+resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.resource_group_location
 }
@@ -39,8 +39,8 @@ resource "azurerm_resource_group" "tf_rg_sampleapi" {
 #create container group
 # resource "azurerm_container_group" "tf_cg_sampleapi" {
 #   name                = "cg_sampleapi"
-#   location            = azurerm_resource_group.tf_rg_sampleapi.location
-#   resource_group_name = azurerm_resource_group.tf_rg_sampleapi.name
+#   location            = azurerm_resource_group.rg.location
+#   resource_group_name = azurerm_resource_group.rg.name
 
 #   ip_address_type = "public"
 #   dns_name_label  = "sampleapitf"
