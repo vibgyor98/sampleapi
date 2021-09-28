@@ -24,8 +24,8 @@ stages:
         repository: 'souravkar.azurecr.io/sampleapi'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-        tags: |
-          $(tag)
+        # tags: |
+        #   $(tag)
 
 - stage: Provision
   displayName: 'Creating Infrasture using Terraform'

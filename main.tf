@@ -88,7 +88,7 @@ resource "azurerm_app_service" "webapp" {
     app_command_line = ""
     # linux_fx_version = "DOCKER|appsvcsample/python-helloworld:latest"
     # linux_fx_version         = "DOCKER|souravkar.azurecr.io/sampleapi:${var.imagebuild}"
-    linux_fx_version = "DOCKER|souravkar.azurecr.io/sampleapi"
+    linux_fx_version = "DOCKER|souravkar.azurecr.io/sampleapi:latest"
     # dotnet_framework_version = "v5.0"
     # scm_type                 = "LocalGit"
   }
