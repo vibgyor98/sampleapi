@@ -24,11 +24,11 @@ terraform {
   }
 }
 
-#use this varibale for tagging docker image
-# variable "imagebuild" {
-#   type        = string
-#   description = "the latest build version"
-# }
+# use this varibale for tagging docker image
+variable "imagebuild" {
+  type        = string
+  description = "the latest build version"
+}
 
 #create resource group for sampleapi
 resource "azurerm_resource_group" "rg" {
@@ -87,7 +87,7 @@ resource "azurerm_app_service" "webapp" {
   site_config {
     app_command_line = ""
     # linux_fx_version = "DOCKER|appsvcsample/python-helloworld:latest"
-    linux_fx_version         = "DOCKER|souravkar.azurecr.io/sampleapi:latest"
+    linux_fx_version         = "souravkar|souravkar.azurecr.io/sampleapi:${var.imagebuild}"
     dotnet_framework_version = "v5.0"
     scm_type                 = "LocalGit"
   }
