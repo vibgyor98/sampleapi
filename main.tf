@@ -48,7 +48,7 @@ resource "azurerm_container_group" "tf_cg_sampleapi" {
 
   container {
     name   = "sampleapi"
-    image  = "souravkar/sampleapi:${var.imagebuild}"
+    image  = "souravkar.azurecr.io/sampleapi:${var.imagebuild}"
     cpu    = "1"
     memory = "1"
 
