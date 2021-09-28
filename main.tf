@@ -87,9 +87,10 @@ resource "azurerm_app_service" "webapp" {
   site_config {
     app_command_line = ""
     # linux_fx_version = "DOCKER|appsvcsample/python-helloworld:latest"
-    linux_fx_version         = "souravkar|souravkar.azurecr.io/sampleapi:${var.imagebuild}"
-    dotnet_framework_version = "v5.0"
-    scm_type                 = "LocalGit"
+    # linux_fx_version         = "DOCKER|souravkar.azurecr.io/sampleapi:${var.imagebuild}"
+    linux_fx_version = "DOCKER|souravkar.azurecr.io/sampleapi"
+    # dotnet_framework_version = "v5.0"
+    # scm_type                 = "LocalGit"
   }
 
   //Define ACR Server login url, username, password
