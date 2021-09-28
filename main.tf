@@ -17,16 +17,16 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name = "rg_storage_tf_state"
+    resource_group_name  = "rg_storage_tf_state"
     storage_account_name = "tfstoragestate"
-    container_name = "tfdata"
-    key = "terraform.tfstate"
+    container_name       = "tfdata"
+    key                  = "terraform.tfstate"
   }
 }
 
 #use this varibale for tagging docker image
 variable "imagebuild" {
-  type = string
+  type        = string
   description = "the latest build version"
 }
 
@@ -47,8 +47,9 @@ resource "azurerm_container_group" "tf_cg_sampleapi" {
   os_type         = "Linux"
 
   container {
-    name   = "souravkar"
-    image  = "souravkar.azurecr.io/sampleapi:${var.imagebuild}"
+    name = "souravkar"
+    # image  = "souravkar.azurecr.io/sampleapi:${var.imagebuild}"
+    image  = "souravkar.azurecr.io/sampleapi"
     cpu    = "1"
     memory = "1"
 
