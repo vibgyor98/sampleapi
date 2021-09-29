@@ -90,7 +90,7 @@ resource "azurerm_app_service" "webapp" {
     app_command_line = ""
     # linux_fx_version = "DOCKER|appsvcsample/python-helloworld:latest"
     # linux_fx_version         = "DOCKER|souravkar.azurecr.io/sampleapi:${var.imagebuild}"
-    linux_fx_version = "DOCKER|souravkar.azurecr.io/sampleapi:${var.imagebuild}"
+    linux_fx_version = "DOCKER|souravkar.azurecr.io/souravkar.azurecr.io/sampleapi:${var.imagebuild}"
     # dotnet_framework_version = "v5.0"
     # scm_type                 = "LocalGit"
   }
@@ -100,7 +100,7 @@ resource "azurerm_app_service" "webapp" {
     # "SOME_KEY" = "some-value"
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     # "DOCKER_REGISTRY_SERVER_URL"          = "https://index.docker.io"
-    "DOCKER_REGISTRY_SERVER_URL" = "souravkar.azurecr.io"
+    "DOCKER_REGISTRY_SERVER_URL" = "https://souravkar.azurecr.io"
   }
 
   # connection_string {
