@@ -101,6 +101,8 @@ resource "azurerm_app_service" "webapp" {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     # "DOCKER_REGISTRY_SERVER_URL"          = "https://index.docker.io"
     "DOCKER_REGISTRY_SERVER_URL" = "https://souravkar.azurecr.io"
+    "DOCKER_REGISTRY_SERVER_USERNAME" = "souravkar"
+    "DOCKER_REGISTRY_SERVER_PASSWORD" = "oK08B0gJFo7jdwCWypCuuEFKAHS9/HdH"
   }
 
   # connection_string {
